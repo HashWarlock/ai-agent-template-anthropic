@@ -75,11 +75,13 @@ GET RESULT: {
     '    <html lang="en">\n' +
     '        <head>\n' +
     '            <meta charset="utf-8" />\n' +
-    '            <title>TestUI</title>\n' +
+    '            <title>AI Agent Contract Demo UI</title>\n' +
     '        </head>\n' +
     '        <body>\n' +
     '            <div align="center">\n' +
-    '                <p>I am an AI-powered digital assistant here to help answer your questions and assist you with various tasks. How can I assist you today?</p>\n' +
+    '                <p>"Anthropic AI Agent Contract hosted on <a href="https://github.com/Phala-Network/ai-agent-template-anthropic">Phala Network</a>, an AI Coprocessor for hosting AI Agents."</p>\n' +
+    '                <img src="https://i.imgur.com/8B3igON.png" width="600" alt="AI Agent Contract" />\n' +
+    "                <p>I am an AI assistant created by Anthropic to be helpful, harmless, and honest. I don't have a physical form or avatar - I'm a language model trained to engage in conversations and help with tasks. How can I assist you today?</p>\n" +
     '            </div>\n' +
     '        </body>\n' +
     '    </html>',
@@ -98,11 +100,23 @@ POST RESULT: {
     '    <html lang="en">\n' +
     '        <head>\n' +
     '            <meta charset="utf-8" />\n' +
-    '            <title>TestUI</title>\n' +
+    '            <title>AI Agent Contract Demo UI</title>\n' +
     '        </head>\n' +
     '        <body>\n' +
     '            <div align="center">\n' +
-    "                <p>Humans first landed on the moon on July 20, 1969, during NASA's Apollo 11 mission.</p>\n" +
+    '                <p>"Anthropic AI Agent Contract hosted on <a href="https://github.com/Phala-Network/ai-agent-template-anthropic">Phala Network</a>, an AI Coprocessor for hosting AI Agents."</p>\n' +
+    '                <img src="https://i.imgur.com/8B3igON.png" width="600" alt="AI Agent Contract" />\n' +
+    '                <p>The first time humans landed on the moon was on July 20, 1969, during the Apollo 11 mission. American astronauts Neil Armstrong and Buzz Aldrin became the first humans to set foot on the lunar surface, while their colleague Michael Collins orbited the moon in the command module.\n' +
+    '\n' +
+    "After this initial landing, there were five more successful crewed moon landings as part of NASA's Apollo program:\n" +
+    '\n' +
+    '1. Apollo 12 - November 19, 1969\n' +
+    '2. Apollo 14 - February 5, 1971\n' +
+    '3. Apollo 15 - July 30, 1971\n' +
+    '4. Apollo 16 - April 21, 1972\n' +
+    '5. Apollo 17 - December 11, 1972\n' +
+    '\n' +
+    'Apollo 17 was the last crewed mission to land on the moon to date. Since then, no human has set foot on the lunar surface, although there have been numerous uncrewed missions to study the moon.</p>\n' +
     '            </div>\n' +
     '        </body>\n' +
     '    </html>',
@@ -200,7 +214,7 @@ https://agents.phala.network/ipfs/<cid>?key=<key>
 ```
 
 Example:
-https://agents.phala.network/ipfs/Qma2WjqWqW8wYG2tEQ9YFUgyVrMDA9VzvkkdeFny7Smn3R/0?key=686df81d326fa5f2&chatQuery=When%20did%20humans%20land%20on%20the%20moon
+https://agents.phala.network/ipfs/QmWw8neMw6CDTQzPNho7JQX3N9zLCcGQSdG5xXQw3tX7v3/0?key=f1a3aacb47d3a78&chatQuery=When%20did%20humans%20land%20on%20the%20moon
 
 </details>
 
@@ -209,7 +223,7 @@ To help create custom logic, we have an array variable named `queries` that can 
 ```typescript
 const query = req.queries.chatQuery[0] as string;
 ```
-The example at https://agents.phala.network/ipfs/Qma2WjqWqW8wYG2tEQ9YFUgyVrMDA9VzvkkdeFny7Smn3R/0?key=686df81d326fa5f2&chatQuery=When%20did%20humans%20land%20on%20the%20moon will have a value of `When did humans land on the moon`. `queries` can have any field name, so `chatQuery` is just an example of a field name and not a mandatory name, but remember to update your `index.ts` file logic to use your expected field name.
+The example at https://agents.phala.network/ipfs/QmWw8neMw6CDTQzPNho7JQX3N9zLCcGQSdG5xXQw3tX7v3/0?key=f1a3aacb47d3a78&chatQuery=When%20did%20humans%20land%20on%20the%20moon will have a value of `When did humans land on the moon`. `queries` can have any field name, so `chatQuery` is just an example of a field name and not a mandatory name, but remember to update your `index.ts` file logic to use your expected field name.
 
 
 ## FAQ
