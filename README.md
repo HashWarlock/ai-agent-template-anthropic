@@ -1,11 +1,7 @@
 <div align="center">
-  <a href="https://github.com/Phala-Network/ai-agent-template-redpill">
-    <h1>AI Agent Contract Template with RedPill</h1>
+  <a href="https://github.com/Phala-Network/ai-agent-template-anthropic">
+    <h1>AI Agent Contract Template with Anthropic</h1>
     <img height="320" src="./public/AI-Agent-Contract.jpg" />
-    <br />
-  </a>
-  <a href="https://platform.openai.com/docs/api-reference">
-    <img height="32" src="public/powered-by-openai-badge-filled-on-light.svg" />
     <br />
   </a>
   <p align="center">
@@ -31,7 +27,7 @@
   <img height="240" src="https://www.jlwranglerforums.com/forum/attachments/zoolander-gif.325299/">
 </div>
 
-The RedPill AI Agent template is a **MINIMAL** template to build an AI Agent that can be hosted on Phala Network's decentralized hosting protocol. Unlike Vercel or other FaaS, it allows you to publish your AI Agent compiled code to IPFS and hosts it on a fully decentralized FaaS cloud with the following benefits:
+The Anthropic AI Agent template is a **MINIMAL** template to build an AI Agent that can be hosted on Phala Network's decentralized hosting protocol. Unlike Vercel or other FaaS, it allows you to publish your AI Agent compiled code to IPFS and hosts it on a fully decentralized FaaS cloud with the following benefits:
 
 - 💨 Ship Fast: Build and ship with familiar toolchain in minutes
 - ⛑️ Secure: Execution guarded by rock solid TEE / Intel SGX
@@ -52,14 +48,11 @@ Create `.env` file and add your RedPill API Key
 ```shell
 cp .env.local .env
 ```
-Get an OpenAI API Key from Redpill
-> Go to https://red-pill.ai/dashboard and claim your OpenAI API Key by swapping some ETH for wGPT at https://app.uniswap.org/explore/tokens/base/0x74F62Bc1961028C22b8080961c6534f4eDD49D6C
->
-> Video: https://youtu.be/ZoJwbLNhbWE
+Get an Anthropic API Key from [Anthropic](https://console.anthropic.com/login?returnTo=%2F%3F)
 
-In `.env` file replace `YOUR_OPENAI_KEY` with your API Key
+In `.env` file replace `YOUR_ANTHROPIC_KEY` with your API Key
 ```text
-OPENAI_API_KEY="YOUR_OPENAI_KEY"
+ANTHROPIC_API_KEY="YOUR_ANTHROPIC_KEY"
 ```
 
 Build your Agent
@@ -74,7 +67,7 @@ npm run test
 
 Expected Test Results
 ```shell
-INPUT: {"method":"GET","path":"/ipfs/QmVHbLYhhYA5z6yKpQr4JWr3D54EhbSsh7e7BFAAyrkkMf","queries":{"chatQuery":["Who are you?"]},"secret":{"openaiApiKey":"YOUR_OPENAI_KEY"},"headers":{}}
+INPUT: {"method":"GET","path":"/ipfs/QmVHbLYhhYA5z6yKpQr4JWr3D54EhbSsh7e7BFAAyrkkMf","queries":{"chatQuery":["Who are you?"]},"secret":{"anthropicApiKey":"YOUR_ANTHROPIC_KEY"},"headers":{}}
 GET RESULT: {
   status: 200,
   body: '\n' +
@@ -97,7 +90,7 @@ GET RESULT: {
 }
 
 
-INPUT: {"method":"POST","path":"/ipfs/QmVHbLYhhYA5z6yKpQr4JWr3D54EhbSsh7e7BFAAyrkkMf","queries":{"chatQuery":["When did humans land on the moon?"]},"secret":{"openaiApiKey":"YOUR_OPENAI_KEY"},"headers":{},"body":"{\"untrustedData\":{\"fid\":2,\"url\":\"https://fcpolls.com/polls/1\",\"messageHash\":\"0xd2b1ddc6c88e865a33cb1a565e0058d757042974\",\"timestamp\":1706243218,\"network\":1,\"buttonIndex\":2,\"castId\":{\"fid\":226,\"hash\":\"0xa48dd46161d8e57725f5e26e34ec19c13ff7f3b9\"}},\"trustedData\":{\"messageBytes\":\"d2b1ddc6c88e865a33cb1a565e0058d757042974...\"}}"}
+INPUT: {"method":"POST","path":"/ipfs/QmVHbLYhhYA5z6yKpQr4JWr3D54EhbSsh7e7BFAAyrkkMf","queries":{"chatQuery":["When did humans land on the moon?"]},"secret":{"anthropicApiKey":"YOUR_ANTHROPIC_KEY"},"headers":{},"body":"{\"untrustedData\":{\"fid\":2,\"url\":\"https://fcpolls.com/polls/1\",\"messageHash\":\"0xd2b1ddc6c88e865a33cb1a565e0058d757042974\",\"timestamp\":1706243218,\"network\":1,\"buttonIndex\":2,\"castId\":{\"fid\":226,\"hash\":\"0xa48dd46161d8e57725f5e26e34ec19c13ff7f3b9\"}},\"trustedData\":{\"messageBytes\":\"d2b1ddc6c88e865a33cb1a565e0058d757042974...\"}}"}
 POST RESULT: {
   status: 200,
   body: '\n' +
@@ -163,10 +156,10 @@ By default, all the compiled JS code is visible for anyone to view if they look 
 <details>
 <summary><b>How to Add Secrets</b></summary>
 
-The steps to add a `secret` is simple. We will add the [OpenAI](https://platform.openai.com/docs/quickstart?context=node) API Key in this example by creating a secret JSON object with the `openaiApiKey`:
+The steps to add a `secret` is simple. We will add the Anthropic API Key in this example by creating a secret JSON object with the `anthropicApiKey`:
 
 ```json
-{"openaiApiKey": "<OPENAI_API_KEY>"}
+{"anthropicApiKey": "<ANTHROPIC_API_KEY>"}
 ```
 
 Then in your frame code, you will be able to access the secret key via `req.secret` object:
@@ -180,11 +173,11 @@ async function POST(req: Request): Promise<Response> {
 > **Note**: Before continuing, make sure to publish your compiled AI Agent JS code, so you can add secrets to the CID.
 
 **Open terminal**
-Use `curl` to `POST` your secrets to `https://agents.phala.network/vaults`. Replace `IPFS_CID` with the CID to the compile JS code in IPFS, and replace `<OPENAI_API_KEY>` with your OpenAI API key. Note that you can name the secret field name something other than `openaiApiKey`, but you will need to access the key in your `index.ts` file with the syntax `req.secret?.<your-secret-field-name> as string`
+Use `curl` to `POST` your secrets to `https://agents.phala.network/vaults`. Replace `IPFS_CID` with the CID to the compile JS code in IPFS, and replace `<ANTHROPIC_API_KEY>` with your Anthropic API key. Note that you can name the secret field name something other than `anthropicApiKey`, but you will need to access the key in your `index.ts` file with the syntax `req.secret?.<your-secret-field-name> as string`
 
 The command will look like this:
 ```shell
-curl https://agents.phala.network/vaults -H 'Content-Type: application/json' -d '{"cid": "IPFS_CID", "data": {"openaiApiKey": "<OPENAI_API_KEY>"}}'
+curl https://agents.phala.network/vaults -H 'Content-Type: application/json' -d '{"cid": "IPFS_CID", "data": {"anthropicApiKey": "<ANTHROPIC_API_KEY>"}}'
 # Output:
 # {"token":"e85ae53d2ba4ca8d","key":"e781ef31210e0362","succeed":true}
 ```
@@ -198,7 +191,7 @@ curl https://agents.phala.network/vaults/<key>/<token>
 
 Expected output:
 ```shell
-{"data":{"openaiApiKey":"<OPENAI_API_KEY>"},"succeed":true}
+{"data":{"anthropicApiKey":"<ANTHROPIC_API_KEY>"},"succeed":true}
 ```
 
 If you are using secrets, make sure that your URL is set in the following syntax where `cid` is the IPFS CID of your compiled JS file and `key` is the `key` from adding secrets to your vault.

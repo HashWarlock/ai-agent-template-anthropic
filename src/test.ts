@@ -31,9 +31,8 @@ async function test() {
         path: '/ipfs/QmVHbLYhhYA5z6yKpQr4JWr3D54EhbSsh7e7BFAAyrkkMf',
         queries: {
             chatQuery: ["Who are you?"],
-            openAiModel: ["gpt-4o"]
         },
-        secret: { openaiApiKey: process.env.OPENAI_API_KEY },
+        secret: { anthropicApiKey: process.env.ANTHROPIC_API_KEY },
         headers: {},
     })
     console.log('GET RESULT:', JSON.parse(getResult))
@@ -43,9 +42,8 @@ async function test() {
         path: '/ipfs/QmVHbLYhhYA5z6yKpQr4JWr3D54EhbSsh7e7BFAAyrkkMf',
         queries: {
             chatQuery: ["When did humans land on the moon?"],
-            openAiModel: ["gpt-4o"]
         },
-        secret: { openaiApiKey: process.env.OPENAI_API_KEY },
+        secret: { anthropicApiKey: process.env.ANTHROPIC_API_KEY },
         headers: {},
         body: {}
     })
